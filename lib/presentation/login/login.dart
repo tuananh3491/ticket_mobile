@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ticket_system/common/widgets/button/basic_app_button.dart';
 import 'package:ticket_system/core/configs/assets/app_images.dart';
 import 'package:ticket_system/core/configs/theme/app_color.dart';
+import 'package:ticket_system/presentation/Staff/pages/staff_dashboard.dart';
 import 'package:ticket_system/presentation/user/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,6 +14,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   dynamic isObscured;
+  final TextEditingController _username = TextEditingController();
 
   void initState() {
     super.initState();
@@ -77,13 +79,22 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   BasicAppButton(
                     onPressed: () {
-                      Navigator.pushAndRemoveUntil(
+                      if(_username.text=="1"){
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (ctx) => StaffDashboardPage(),
+                        ),
+                      );
+                    } else{
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (ctx) => HomePage(),
                         ),
-                        (route) => false,
                       );
+                    }
+                      
                     },
                     height: 50,
                     title: "Login",
@@ -111,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _usernameField(BuildContext context) {
     return TextField(
-      // controller: _Username,
+      controller: _username,
       decoration: const InputDecoration(hintText: "Username")
           .applyDefaults(Theme.of(context).inputDecorationTheme),
     );

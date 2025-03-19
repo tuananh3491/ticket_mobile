@@ -14,10 +14,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: "Ticket System",
       theme: AppTheme.lightTheme,
       debugShowCheckedModeBanner: false,
-      home: const StaffDashboardPage(),
+      home: const LoginPage(),
     );
   }
 }

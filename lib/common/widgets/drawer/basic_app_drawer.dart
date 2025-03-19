@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ticket_system/presentation/login/login.dart';
 
 class BasicAppDrawer extends StatelessWidget {
   const BasicAppDrawer({super.key});
@@ -35,7 +36,15 @@ class BasicAppDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.logout),
             title: Text("Logout"),
-            onTap: () {},
+            onTap: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (ctx) => LoginPage(),
+                ),
+                (route) => false,
+              );
+            },
           ),
         ],
       ),
